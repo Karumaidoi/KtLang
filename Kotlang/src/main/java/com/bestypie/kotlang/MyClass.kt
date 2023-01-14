@@ -5,8 +5,23 @@ fun main() {
     // Val is used when the variable declared is final or constant - Immutable
 
 
-    val myListOfName = listOf<String>("Alex", "John", "Agnes", "Terry")
+    val myListOfName = listOf<String>("Alex", "John", "Agnes", "Terry", "ML")
+    val mutableList = mutableListOf<String>("Amos")
+    mutableList.add("Mercy")
 
+    val found = myListOfName.filter { it.startsWith("M", ignoreCase = true) && it.endsWith('L')}
+    print(found);
+//    mutableList[2];
+    mutableList.removeAt(0);
+
+    val set = setOf<String>("Alex", "John")
+    print(set);
+
+    val map = mapOf<String, String>("Up" to "Down", "Center" to "Top", "West" to "East")
+    var map2 = mutableMapOf<String, String>();
+    print(map.values);
+
+    var emptyMap = emptyMap<String, Int>()
 
 //    calculateMath(multipleOf = 3)
     val money = calculateAge(20);
@@ -25,6 +40,12 @@ fun main() {
     val name: (String) -> Unit = {
         print(it);
     } // Lambda that does not return anything. - Unit means Void in Kotlin
+
+
+    // CLASSES
+    var newCar = Car();
+    val text = newCar.createModel();
+    print(text);
 
     // If else statements
 //    if(money >= 100) {
@@ -81,4 +102,19 @@ fun loopOverNames(listNames: List<String>) {
 
 fun enhancedMessage(message: String, functionAsParameter: () -> Int) {
     print("$message ${functionAsParameter()}")
+}
+
+
+class Car(var name: String = "Mercedes", val year: Int = 22, val brand: String = "New") {
+
+    init {
+        if(this.name == "Mercedes") {
+            println("This is a Nice Car")
+        }
+    }
+
+    fun createModel(): String  {
+        return "The car name is ${this.name}, and it was deigned ${this.year} ago. It's brand ${this.brand}"
+    }
+
 }
