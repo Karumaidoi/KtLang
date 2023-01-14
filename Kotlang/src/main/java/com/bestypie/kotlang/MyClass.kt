@@ -1,7 +1,5 @@
 package com.bestypie.kotlang
 
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 fun main() {
     // Var is used when the variable declared is going to be changed - Mutable
     // Val is used when the variable declared is final or constant - Immutable
@@ -9,7 +7,19 @@ fun main() {
 
 //    calculateMath(multipleOf = 3)
     val money = calculateAge(20);
+    val add: (Int, Int) -> Int = {a,b -> a * b} // This are Lambda functions
     print(money);
+
+    enhancedMessage("I love dart programming") {
+        add(20,20);
+    }
+
+//    sum(2,3);
+    print(age(10))
+
+    val name: (String) -> Unit = {
+        print(it);
+    } // Lambda that does not return anything. - Unit means Void in Kotlin
 
     // If else statements
 //    if(money >= 100) {
@@ -44,10 +54,18 @@ fun calculateAge(age:Int): Boolean {
     return age % 2 == 0
 }
 
+val age: (Int) -> Int = {a -> a * 7}
+
 fun calculateMath(first: Int = 100, second: Int = 1000, multipleOf: Int) {
     for(i in first..second) {
         if(i%multipleOf == 0) {
             println("This $i is divisible by 2")
         }
     }
+}
+
+val sum: (Int, Int) -> Int = {a,b -> a +b};
+
+fun enhancedMessage(message: String, functionAsParameter: () -> Int) {
+    print("$message ${functionAsParameter()}")
 }
