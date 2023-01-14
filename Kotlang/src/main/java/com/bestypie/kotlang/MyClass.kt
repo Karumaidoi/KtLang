@@ -7,6 +7,9 @@ fun main() {
     // Var is used when the variable declared is going to be changed - Mutable
     // Val is used when the variable declared is final or constant - Immutable
 
+    // TEST EXTENSIONS
+    print("Home".separate())
+
 
     val myListOfName = listOf<String>("Alex", "John", "Agnes", "Terry", "ML")
     val mutableList = mutableListOf<String>("Amos")
@@ -148,4 +151,14 @@ class Button2(label: String): HoverEvent {
 
 interface HoverEvent {
     fun createHover();
+}
+
+// EXTENSIONS
+fun String.append(toAppend: String): String {
+    return  this.plus(toAppend);
+}
+
+fun String.separate(): String {
+
+    return  this.substring(1, this.length - 1);
 }
