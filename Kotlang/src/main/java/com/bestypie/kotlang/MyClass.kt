@@ -5,10 +5,15 @@ fun main() {
     // Val is used when the variable declared is final or constant - Immutable
 
 
+    val myListOfName = listOf<String>("Alex", "John", "Agnes", "Terry")
+
+
 //    calculateMath(multipleOf = 3)
     val money = calculateAge(20);
     val add: (Int, Int) -> Int = {a,b -> a * b} // This are Lambda functions
-    print(money);
+
+    loopOverNames(myListOfName)
+
 
     enhancedMessage("I love dart programming") {
         add(20,20);
@@ -65,6 +70,14 @@ fun calculateMath(first: Int = 100, second: Int = 1000, multipleOf: Int) {
 }
 
 val sum: (Int, Int) -> Int = {a,b -> a +b};
+
+
+
+fun loopOverNames(listNames: List<String>) {
+    for (i in listNames) {
+        println(i)
+    }
+}
 
 fun enhancedMessage(message: String, functionAsParameter: () -> Int) {
     print("$message ${functionAsParameter()}")
