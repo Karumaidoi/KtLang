@@ -159,6 +159,11 @@ fun String.append(toAppend: String): String {
 }
 
 fun String.separate(): String {
-
     return  this.substring(1, this.length - 1);
 }
+
+// TODO
+// Learn more on data class
+data class MyClass(val name: String, val age: Int, val length: Double, val width: Double)
+
+val person = MyClass(name = "Alex", age= 23, length = 23.0, width = 33.0)
