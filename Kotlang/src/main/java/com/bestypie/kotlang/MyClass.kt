@@ -1,5 +1,8 @@
 package com.bestypie.kotlang
 
+import java.awt.Color
+import java.awt.Label
+
 fun main() {
     // Var is used when the variable declared is going to be changed - Mutable
     // Val is used when the variable declared is final or constant - Immutable
@@ -47,13 +50,8 @@ fun main() {
     val text = newCar.createModel();
     print(text);
 
-    // If else statements
-//    if(money >= 100) {
-//        print("You are so much Rich")
-//    } else {
-//        print("Wake up look for Money Alex")
-//    }
-//
+    var truck = Truck("Bima", 23, "Old");
+    print(truck.createModel());
 //    // When statements
 //    when (money) {
 //        in 1..100 -> print("You are a super man")
@@ -105,7 +103,13 @@ fun enhancedMessage(message: String, functionAsParameter: () -> Int) {
 }
 
 
-class Car(var name: String = "Mercedes", val year: Int = 22, val brand: String = "New") {
+class Truck(name: String, year: Int, brand: String): Car(name, year, brand) {
+    override fun createModel(): String {
+        return "This is a truck with no Model Hooray!"
+    };
+};
+
+open class Car(var name: String = "Mercedes", val year: Int = 22, val brand: String = "New") {
 
     init {
         if(this.name == "Mercedes") {
@@ -113,8 +117,35 @@ class Car(var name: String = "Mercedes", val year: Int = 22, val brand: String =
         }
     }
 
-    fun createModel(): String  {
+    open fun createModel(): String  {
         return "The car name is ${this.name}, and it was deigned ${this.year} ago. It's brand ${this.brand}"
     }
 
+}
+
+class Button(label: String): ClickEvent {
+    override fun onClick(message: String) {
+        TODO("Not yet implemented")
+    }
+}
+
+class Character(val name: String): ClickEvent {
+    override fun onClick(message: String) {
+        TODO("Not yet implemented")
+    }
+
+}
+
+interface ClickEvent {
+    fun onClick(message: String)
+}
+
+class Button2(label: String): HoverEvent {
+    override fun createHover() {
+        TODO("Not yet implemented")
+    }
+}
+
+interface HoverEvent {
+    fun createHover();
 }
