@@ -7,6 +7,14 @@ fun main() {
     // Var is used when the variable declared is going to be changed - Mutable
     // Val is used when the variable declared is final or constant - Immutable
 
+    // TEST GENERICS
+    var listNames = listOf<String>("Amos", "Agnes", "Martin");
+    val listNumbers = listOf<Int>(23, 34, 55, 70, 100);
+    var finder = Finder(listNumbers);
+    finder.finditem(23) {
+        println("Found $it")
+    }
+
     // TEST EXTENSIONS
     print("Home".separate())
 
@@ -167,3 +175,17 @@ fun String.separate(): String {
 data class MyClass(val name: String, val age: Int, val length: Double, val width: Double)
 
 val person = MyClass(name = "Alex", age= 23, length = 23.0, width = 33.0)
+
+
+// GENIRICS
+class Finder<T>(private val list: List<T>) {
+    fun finditem(element: T, foundItem:(element: T?) -> Unit) {
+        var itemFoundList = list.filter {
+            it == element
+        }
+
+        if(itemFoundList.isNullOrEmpty()) foundItem(null) else {
+            foundItem(itemFoundList.first());
+        }
+    }
+}
