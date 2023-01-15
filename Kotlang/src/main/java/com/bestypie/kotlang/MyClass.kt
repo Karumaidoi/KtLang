@@ -15,6 +15,10 @@ fun main() {
         println("Found $it")
     }
 
+    //TEST ENUMS
+    val state = Result.SUCCESS
+    getResult(state)
+
     // TEST EXTENSIONS
     print("Home".separate())
 
@@ -188,4 +192,19 @@ class Finder<T>(private val list: List<T>) {
             foundItem(itemFoundList.first());
         }
     }
+}
+
+fun getResult(result: Result) {
+    return when (result) {
+        Result.SUCCESS -> print("Success")
+        Result.FAILURE -> print("Failure")
+        Result.ERROR -> print("Error")
+    }
+}
+
+// ENUMS
+enum class Result {
+    SUCCESS,
+    FAILURE,
+    ERROR
 }
